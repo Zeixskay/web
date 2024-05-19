@@ -42,7 +42,6 @@ public class studentServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         if("update".equals(type)){
             int id =  Integer.parseInt(request.getParameter("id"));
             try {
@@ -72,7 +71,6 @@ public class studentServlet extends HttpServlet {
                 }
             }
         }
-
         request.setAttribute("list",list);
         request.setAttribute("total",total);
         request.setAttribute("totalNum",totalNum);

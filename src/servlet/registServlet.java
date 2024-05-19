@@ -26,13 +26,14 @@ public class registServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        String uname=request.getParameter("uname");
-        String upwd=request.getParameter("upwd");
+        String uname=request.getParameter("uuname");
+        String upwd=request.getParameter("uupwd");
 
         studentService userService=new studentServiceImpl();
         boolean flag= false;
         try {
             flag = userService.regist(uname,upwd);
+            System.out.println(flag);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -28,7 +28,6 @@ public class loginServlet extends HttpServlet {
 
         String uname=request.getParameter("uname");
         String upwd=request.getParameter("upwd");
-
         studentService userService=new studentServiceImpl();
         boolean flag= false;
         try {
@@ -46,9 +45,6 @@ public class loginServlet extends HttpServlet {
         }else{
             response.sendRedirect("regist.jsp");
         }
-
-
-
 
     }
 

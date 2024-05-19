@@ -22,7 +22,7 @@ public class filter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         String url = request.getRequestURL().toString();
         String urls[]=new String[]{
-                "/loginServlet","/index.jsp","/regist.jsp","/img/"
+                "/loginServlet","/index.jsp","/regist.jsp","/img/","/regist"
         };
         for(String u:urls){
             if(url.contains(u)){
