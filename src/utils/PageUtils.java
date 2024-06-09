@@ -10,7 +10,6 @@ import java.util.List;
 public class PageUtils extends DBUtils{
     private int start;
     private int count;
-
     public PageUtils( int start, int count) {
         this.start = start;
         this.count = count;

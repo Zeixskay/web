@@ -37,10 +37,11 @@ public class loginServlet extends HttpServlet {
         }
         if(flag){
             Student student =new Student();
-            student.setUserName("999");
-            student.setPassWord("aaa");
+            student.setUserName(uname);
+            student.setPassWord(upwd);
             HttpSession session =request.getSession();
             session.setAttribute("student",student);
+
             response.sendRedirect("/student");
         }else{
             response.sendRedirect("regist.jsp");

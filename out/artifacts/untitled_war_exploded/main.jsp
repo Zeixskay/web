@@ -1,5 +1,6 @@
 <%@ page import="entity.Student" %>
 <%@ page import="java.util.List" %>
+<%@ page import="entity.studentInfo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -8,6 +9,9 @@
 <head>
     <title>用户信息</title>
 </head>
+<p>欢迎: ${sessionScope.student.userName} 登录！<a href="/out">退出登录</a></p>
+
+<p>在线人数: <%=studentInfo.online%></p>
 <body>
 <div class="all">
     <span class="title">用户信息</span>
@@ -120,6 +124,7 @@
         transform: translate(-50%,-50%);
         text-align: center;
     }
+
      a{
         text-decoration: none;
     }

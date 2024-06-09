@@ -1,11 +1,25 @@
 package entity;
 
-public class Student {
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
+
+public class Student implements HttpSessionBindingListener  {
     private Integer id;
     private  String userName;
     private  String  passWord;
     private  String  className;
 
+    public void valueBound(HttpSessionBindingEvent event) {
+        System.out.println("绑定");
+        studentInfo.online++;
+    }
+
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        System.out.println("解绑");
+        studentInfo.online--;
+    }
     public Student(Integer id, String userName, String passWord, String className) {
         this.id = id;
         this.userName = userName;
