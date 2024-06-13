@@ -5,20 +5,18 @@
     <title>用户登录</title>
 </head>
 <body>
-
-
 <div class="a">
 
     <span >用户登录</span>
-    <form action="/loginServlet" method="post" class="e">
+    <div class="e">
         <p>账号</p>
         <input type="text" placeholder="请输入用户名" name="uname"/>
         <p>密码</p>
         <input type="password" placeholder="请输入密码"  name="upwd"/>
         <br/>
-        <input type="submit" value="登录"/>
+        <input type="submit"  id="submit" value="登录"/>
         <p>没有账号，<a href="regist.jsp" target="_self" >去注册</a></p>
-    </form>
+    </div>
 </div>
 </body>
 <style>
@@ -129,8 +127,30 @@
         letter-spacing: 4px;
         margin-bottom: 40px;
     }
-
-
 </style>
-
 </html>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#submit").click(function () {
+            var uname = $("input[name='uname']").val();
+            var upwd = $("input[name='upwd']").val();
+            if (uname == "" || upwd == "") {
+                alert("用户名或密码不能为空");
+                return;
+            }
+             $.post("loginServlet", {
+                uname: uname,
+                upwd: upwd
+        },
+            function (data) {
+            if (data == "success") {
+                alert("登录成功!");
+                window.location.href = "/student";
+            } else {
+                alert("登录失败!");
+            }
+        });
+    });
+    });
+</script>

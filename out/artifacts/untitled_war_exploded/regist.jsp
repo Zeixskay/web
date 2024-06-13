@@ -8,7 +8,7 @@
  <div class="a">
 
      <span >用户注册</span>
-     <form action="/regist" method="post" class="e">
+     <div class="e">
          <p>账号</p>
          <input type="text" placeholder="请输入用户名" name="uuname"/>
          <p>密码</p>
@@ -126,9 +126,34 @@
           margin-bottom: 40px;
       }
   </style>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>
-    document.getElementById("regist").addEventListener('click',function () {
-        alert("注册成功！");
-    })
+
+  $(function(){
+      $("#regist").click(function(){
+          var uuname = $("input[name='uuname']").val();
+          var uupwd = $("input[name='uupwd']").val();
+          if(uuname == "" || uupwd == ""){
+              alert("账号或密码不能为空");
+          }
+          $.ajax({
+              url: "regist",
+              type: "post",
+              data: {
+                  uuname: uuname,
+                  uupwd: uupwd
+              },
+              success: function(data){
+                  if(data == "success"){
+                      alert("注册成功");
+                      window.location.href = "/index.jsp";
+                  }else{
+                      alert("注册失败");
+                  }
+              }
+          });
+      });
+  });
+
 </script>
 </html>

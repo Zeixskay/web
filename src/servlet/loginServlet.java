@@ -6,6 +6,7 @@ import service.impl.studentServiceImpl;
 import service.studentService;
 
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,8 @@ import java.sql.SQLException;
 
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         try {
@@ -41,12 +44,15 @@ public class loginServlet extends HttpServlet {
             student.setPassWord(upwd);
             HttpSession session =request.getSession();
             session.setAttribute("student",student);
-
-            response.sendRedirect("/student");
+            response.getWriter().write("success");
         }else{
             response.sendRedirect("regist.jsp");
         }
 
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
+    }
 }

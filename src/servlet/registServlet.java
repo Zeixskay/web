@@ -38,7 +38,7 @@ public class registServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         if(flag){
-            response.sendRedirect("index.jsp");
+           response.getWriter().write("success");
         }else{
             response.sendRedirect("regist.jsp");
         }
